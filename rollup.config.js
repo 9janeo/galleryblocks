@@ -1,5 +1,6 @@
 'use strict'
 import babel from 'rollup-plugin-babel';
+import scss from 'rollup-plugin-scss';
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 
 let fileDest = 'blockbundle.js'
@@ -19,6 +20,7 @@ module.exports = {
     babel({
       exclude: 'node_modules/**', 
     }),
+    scss(),
     nodeResolve(),
   ],
 };

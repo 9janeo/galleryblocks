@@ -164,7 +164,7 @@
   } = wp.blocks;
   wp.i18n;
   const {
-    InspectorControls
+    InspectorControls: InspectorControls$1
   } = wp.blockEditor;
   registerBlockType$1('ccg/carousel', {
     title: 'Carousel',
@@ -191,7 +191,7 @@
         });
       }
 
-      return [wp.element.createElement(InspectorControls, null, "Hello From Inspector"), wp.element.createElement("div", {
+      return [wp.element.createElement(InspectorControls$1, null, "Hello From Inspector"), wp.element.createElement("div", {
         className: props.className
       }, wp.element.createElement("ul", {
         className: "list-unstyled"
@@ -438,16 +438,24 @@
     })))
   };
 
-  // Main File
   const {
     registerBlockType
   } = wp.blocks;
   const {
     __
   } = wp.i18n;
+  const {
+    InspectorControls
+  } = wp.blockEditor;
+  const {
+    PanelBody,
+    PanelRow,
+    TextControl,
+    SelectControl
+  } = wp.components;
   registerBlockType('udemy/recipe', {
     title: __('Recipe', 'recipe'),
-    description: __('provides a short summary pf a recipe.', 'recipe'),
+    description: __('provides a short summary of a recipe.', 'recipe'),
     // Common, formatting, layouts, widgets, embed
     category: 'common',
     icon: block_icons.wapuu,
@@ -455,15 +463,136 @@
     supports: {
       html: false
     },
+    attributes: {
+      ingredients: {
+        type: 'string',
+        source: 'text',
+        selector: '.ingredients-ph'
+      },
+      cooking_time: {
+        type: 'string',
+        source: 'text',
+        selector: '.cooking-time-ph'
+      },
+      utensils: {
+        type: 'string',
+        source: 'text',
+        selector: '.utensils-ph'
+      },
+      cooking_experience: {
+        type: 'string',
+        source: 'text',
+        default: 'Beginner',
+        selector: '.cooking-experience-ph'
+      },
+      meal_type: {
+        type: 'string',
+        source: 'text',
+        default: 'Breakfast',
+        selector: '.meal-type-ph'
+      }
+    },
     edit: props => {
-      return wp.element.createElement("div", {
+      // const updateIngredients = (new_val) => {
+      //   props.setAttributes({ ingredients: new_val} )
+      // }
+      return [wp.element.createElement(InspectorControls, null, wp.element.createElement(PanelBody, {
+        title: __('Basics', 'recipe')
+      }, wp.element.createElement(PanelRow, null, wp.element.createElement("p", null, __('Configure the contents of your block here.', 'recipe'))), wp.element.createElement(TextControl, {
+        label: __('Ingredients', 'recipe'),
+        help: __('Ex: tomatoes, lettuce, olive oil, etc.', 'recipe'),
+        value: props.attributes.ingredients,
+        onChange: new_val => {
+          props.setAttributes({
+            ingredients: new_val
+          });
+        }
+      }), wp.element.createElement(TextControl, {
+        label: __('Cooking Time', 'recipe'),
+        help: __('How long will this take to cook?', 'recipe'),
+        value: props.attributes.cooking_time,
+        onChange: new_val => {
+          props.setAttributes({
+            cooking_time: new_val
+          });
+        }
+      }), wp.element.createElement(TextControl, {
+        label: __('Utensils', 'recipe'),
+        help: __('Ex: spoon, knife, pots, pans, etc.', 'recipe'),
+        value: props.attributes.utensils,
+        onChange: new_val => {
+          props.setAttributes({
+            utensils: new_val
+          });
+        }
+      }), wp.element.createElement(SelectControl, {
+        label: __('Cooking Experience', 'recipe'),
+        help: __('How skilled should the reader be?', 'recipe'),
+        value: props.attributes.cooking_experience,
+        options: [{
+          value: 'Beginner',
+          label: 'Beginner'
+        }, {
+          value: 'Intermediate',
+          label: 'Intermediate'
+        }, {
+          value: 'Expert',
+          label: 'Expert'
+        }],
+        onChange: new_val => {
+          props.setAttributes({
+            cooking_experience: new_val
+          });
+        }
+      }), wp.element.createElement(SelectControl, {
+        label: __('Meal Type', 'recipe'),
+        help: __('How skilled should the reader be?', 'recipe'),
+        value: props.attributes.meal_type,
+        options: [{
+          value: 'Breakfast',
+          label: 'Breakfast'
+        }, {
+          value: 'Lunch',
+          label: 'Lunch'
+        }, {
+          value: 'Dinner',
+          label: 'Dinner'
+        }],
+        onChange: new_val => {
+          props.setAttributes({
+            meal_type: new_val
+          });
+        }
+      }))), wp.element.createElement("div", {
         className: props.className
       }, wp.element.createElement("ul", {
         className: "list-unstyled"
-      }, wp.element.createElement("li", null, wp.element.createElement("strong", null, __('First one', 'recipe'), ": "), "INGREDIENTS_PH"), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Time', 'recipe'), ": "), "COOKING_TIME_PH"), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Utensils', 'recipe'), ": "), "UTENSILS_PH"), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Experience', 'recipe'), ": "), "LEVEL_PH"), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Meal Type', 'recipe'), ": "), "TYPE_PH")));
+      }, wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Ingredients', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "ingredients-ph"
+      }, props.attributes.ingredients)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Time', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "cooking-time-ph"
+      }, props.attributes.cooking_time)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Utensils', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "utensils-ph"
+      }, props.attributes.utensils)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Experience', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "cooking-experience-ph"
+      }, props.attributes.cooking_experience)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Meal Type', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "meal-type-ph"
+      }, props.attributes.meal_type))))];
     },
     save: props => {
-      return wp.element.createElement("p", null, "Hello World!");
+      return wp.element.createElement("div", null, wp.element.createElement("ul", {
+        className: "list-unstyled"
+      }, wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Ingredients', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "ingredients-ph"
+      }, props.attributes.ingredients)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Time', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "cooking-time-ph"
+      }, props.attributes.cooking_time)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Utensils', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "utensils-ph"
+      }, props.attributes.utensils)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Experience', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "cooking-experience-ph"
+      }, props.attributes.cooking_experience)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Meal Type', 'recipe'), ": "), wp.element.createElement("span", {
+        className: "meal-type-ph"
+      }, props.attributes.meal_type))));
     }
   });
 

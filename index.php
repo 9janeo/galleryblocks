@@ -19,6 +19,7 @@ include('src/clear-blocks/enqueue.php');
 // Hooks
 // register_activation_hook( __FILE__, $callback:callable )
 add_action( 'enqueue_block_editor_assets', 'r_enqueue_block_editor_assets');
+add_action( 'enqueue_block_assets', 'r_enqueue_block_assets');
 
 
 

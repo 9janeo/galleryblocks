@@ -10,3 +10,11 @@
     wp_enqueue_script( 'r_blocks_bundle');
   }
   
+  function r_enqueue_block_assets(){
+    wp_register_style(
+      'r_blocks',
+      plugins_url( 'build/blockBundle.css', CLEAR_BLOCKS_URL )
+    );
+
+    wp_enqueue_style( 'r_blocks' );
+  }
