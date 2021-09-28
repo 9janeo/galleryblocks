@@ -15,32 +15,36 @@ registerBlockType('ccg/carousel', {
       props.setAttributes({content: event.target.value})
     }
     
-    function updateColor(value) {
-      console.log(value.props)
-      props.setAttributes({color: value.hex})
+    function updateColor(event) {
+      props.setAttributes({color: event.target.value})
     }
 
     return [
-      // <InspectorControls>Hello From Inspector</InspectorControls>,
+      <InspectorControls>Hello From Inspector</InspectorControls>,
       <div className={props.className}>
         <ul className="list-unstyled">
           <li>First one</li>
           <li>
             <label>
             Content:
-              <input type="text" value={props.attributes.content} onChangeComplete={updateContent} />
+              <input type="text" value={props.attributes.content} onChange={updateContent} />
             </label>
           </li>
           <li>
             <label>
-              Color: <input type="text" value={props.attributes.color} onChangeComplete={updateColor} />
+              Color: <input type="text" value={props.attributes.color} onChange={updateColor} />
             </label>
           </li>
         </ul>
       </div>
     ]
   },
-  save: function(props){
-    return [<h3 className={props.className} >{props.attributes.content}</h3>];
-  }
-});
+  save: (props) => {
+    return (
+      <div className={props.className} style={`border: 5px dashed #333`}>
+        <p>First One</p>
+        <h3 style={`color: ${props.attributes.color}`}>{props.attributes.content}</h3>
+      </div>
+    )
+  },
+})
