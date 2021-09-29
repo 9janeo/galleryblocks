@@ -2,7 +2,10 @@ import block_icons from "../icons/index";
 
 const {registerBlockType} = wp.blocks;
 const{ __ } = wp.i18n;
-const { InspectorControls } = wp.blockEditor;
+const { InspectorControls,
+        BlockControls,
+        AlignmentToolbar,
+        BlockAlignmentToolbar } = wp.blockEditor;
 const { PanelBody, PanelRow, TextControl, SelectControl } = wp.components;
 
 registerBlockType( 'udemy/recipe', {
@@ -49,8 +52,23 @@ registerBlockType( 'udemy/recipe', {
       source: 'text',
       default: 'Breakfast',
       selector: '.meal-type-ph'
+    },
+    text_alignment: {
+      type: 'string'
+    },
+    block_alignment: {
+      type: 'string',
+      default: 'wide'
+    }
+
+  },
+
+  getEditWrapperProps: ( { block_alignment } ) => {
+    if( 'left' === block_alignment || 'right' === block_alignment || 'full' === block_alignment ){
+      return { 'data-align': block_alignment };
     }
   },
+
   edit: (props) => {
 
     // const updateIngredients = (new_val) => {
@@ -116,7 +134,22 @@ registerBlockType( 'udemy/recipe', {
         </PanelBody>
       </InspectorControls>,
       <div className={ props.className }>
-        <ul className="list-unstyled">
+        <BlockControls>
+          <BlockAlignmentToolbar 
+            value={ props.attributes.block_alignment }
+            onChange={ (new_val) => {
+              props.setAttributes({block_alignment: new_val})
+            }}
+          />
+          <AlignmentToolbar
+            value={ props.attributes.text_alignment }
+            onChange= { (new_val) => {
+              props.setAttributes({ text_alignment: new_val });
+            }} />
+        </BlockControls>
+        <ul className="list-unstyled"
+            style={{ textAlign: props.attributes.text_alignment }}
+        >
           <li>
             <strong>{ __('Ingredients', 'recipe') }: </strong>
             <span className="ingredients-ph">{props.attributes.ingredients}</span>
@@ -143,8 +176,10 @@ registerBlockType( 'udemy/recipe', {
     ];
   },
   save: (props) => {
-    return <div>
-      <ul className="list-unstyled">
+    return <div className={ `align${props.attributes.block_alignment}` }>
+      <ul className="list-unstyled"
+          style={{ textAlign: props.attributes.text_alignment }}
+      >
         <li>
           <strong>{ __('Ingredients', 'recipe') }: </strong>
           <span className="ingredients-ph">{props.attributes.ingredients}</span>

@@ -4,14 +4,14 @@
 })((function () { 'use strict';
 
   const {
-    registerBlockType: registerBlockType$3
+    registerBlockType: registerBlockType$5
   } = wp.blocks;
   const {
-    __: __$2
+    __: __$4
   } = wp.i18n;
-  registerBlockType$3("cgb/two-blocks", {
+  registerBlockType$5("cgb/two-blocks", {
     title: wp.i18n.__('Niyi Block', 'cgb'),
-    description: __$2('Provides form fields for basic biometric data', 'cgb'),
+    description: __$4('Provides form fields for basic biometric data', 'cgb'),
     icon: "businessperson",
     category: "common",
     attributes: {
@@ -59,11 +59,11 @@
   }
 
   const {
-    __: __$1
+    __: __$3
   } = wp.i18n;
   wp.blocks.registerBlockType("cgb/plugin-block", {
-    title: __$1('Enviro', 'enviro'),
-    description: __$1('Provides a brief description of the current environment', 'enviro'),
+    title: __$3('Enviro', 'enviro'),
+    description: __$3('Provides a brief description of the current environment', 'enviro'),
     icon: "welcome-learn-more",
     category: "common",
     attributes: {
@@ -109,10 +109,10 @@
   }
 
   const {
-    registerBlockType: registerBlockType$2
+    registerBlockType: registerBlockType$4
   } = wp.blocks;
   wp.i18n;
-  registerBlockType$2('ccg/border-box', {
+  registerBlockType$4('ccg/border-box', {
     title: 'My Cool Border Box',
     icon: 'smiley',
     category: 'common',
@@ -160,13 +160,13 @@
   });
 
   const {
-    registerBlockType: registerBlockType$1
+    registerBlockType: registerBlockType$3
   } = wp.blocks;
   wp.i18n;
   const {
     InspectorControls: InspectorControls$1
   } = wp.blockEditor;
-  registerBlockType$1('ccg/carousel', {
+  registerBlockType$3('ccg/carousel', {
     title: 'Carousel',
     icon: 'update',
     category: 'media',
@@ -439,13 +439,16 @@
   };
 
   const {
-    registerBlockType
+    registerBlockType: registerBlockType$2
   } = wp.blocks;
   const {
-    __
+    __: __$2
   } = wp.i18n;
   const {
-    InspectorControls
+    InspectorControls,
+    BlockControls: BlockControls$1,
+    AlignmentToolbar,
+    BlockAlignmentToolbar
   } = wp.blockEditor;
   const {
     PanelBody,
@@ -453,13 +456,13 @@
     TextControl,
     SelectControl
   } = wp.components;
-  registerBlockType('udemy/recipe', {
-    title: __('Recipe', 'recipe'),
-    description: __('provides a short summary of a recipe.', 'recipe'),
+  registerBlockType$2('udemy/recipe', {
+    title: __$2('Recipe', 'recipe'),
+    description: __$2('provides a short summary of a recipe.', 'recipe'),
     // Common, formatting, layouts, widgets, embed
     category: 'common',
     icon: block_icons.wapuu,
-    keywords: [__('Food', 'recipe'), __('Ingredients', 'recipe'), __('Meal Type', 'recipe')],
+    keywords: [__$2('Food', 'recipe'), __$2('Ingredients', 'recipe'), __$2('Meal Type', 'recipe')],
     supports: {
       html: false
     },
@@ -490,6 +493,22 @@
         source: 'text',
         default: 'Breakfast',
         selector: '.meal-type-ph'
+      },
+      text_alignment: {
+        type: 'string'
+      },
+      block_alignment: {
+        type: 'string',
+        default: 'wide'
+      }
+    },
+    getEditWrapperProps: ({
+      block_alignment
+    }) => {
+      if ('left' === block_alignment || 'right' === block_alignment || 'full' === block_alignment) {
+        return {
+          'data-align': block_alignment
+        };
       }
     },
     edit: props => {
@@ -497,10 +516,10 @@
       //   props.setAttributes({ ingredients: new_val} )
       // }
       return [wp.element.createElement(InspectorControls, null, wp.element.createElement(PanelBody, {
-        title: __('Basics', 'recipe')
-      }, wp.element.createElement(PanelRow, null, wp.element.createElement("p", null, __('Configure the contents of your block here.', 'recipe'))), wp.element.createElement(TextControl, {
-        label: __('Ingredients', 'recipe'),
-        help: __('Ex: tomatoes, lettuce, olive oil, etc.', 'recipe'),
+        title: __$2('Basics', 'recipe')
+      }, wp.element.createElement(PanelRow, null, wp.element.createElement("p", null, __$2('Configure the contents of your block here.', 'recipe'))), wp.element.createElement(TextControl, {
+        label: __$2('Ingredients', 'recipe'),
+        help: __$2('Ex: tomatoes, lettuce, olive oil, etc.', 'recipe'),
         value: props.attributes.ingredients,
         onChange: new_val => {
           props.setAttributes({
@@ -508,8 +527,8 @@
           });
         }
       }), wp.element.createElement(TextControl, {
-        label: __('Cooking Time', 'recipe'),
-        help: __('How long will this take to cook?', 'recipe'),
+        label: __$2('Cooking Time', 'recipe'),
+        help: __$2('How long will this take to cook?', 'recipe'),
         value: props.attributes.cooking_time,
         onChange: new_val => {
           props.setAttributes({
@@ -517,8 +536,8 @@
           });
         }
       }), wp.element.createElement(TextControl, {
-        label: __('Utensils', 'recipe'),
-        help: __('Ex: spoon, knife, pots, pans, etc.', 'recipe'),
+        label: __$2('Utensils', 'recipe'),
+        help: __$2('Ex: spoon, knife, pots, pans, etc.', 'recipe'),
         value: props.attributes.utensils,
         onChange: new_val => {
           props.setAttributes({
@@ -526,8 +545,8 @@
           });
         }
       }), wp.element.createElement(SelectControl, {
-        label: __('Cooking Experience', 'recipe'),
-        help: __('How skilled should the reader be?', 'recipe'),
+        label: __$2('Cooking Experience', 'recipe'),
+        help: __$2('How skilled should the reader be?', 'recipe'),
         value: props.attributes.cooking_experience,
         options: [{
           value: 'Beginner',
@@ -545,8 +564,8 @@
           });
         }
       }), wp.element.createElement(SelectControl, {
-        label: __('Meal Type', 'recipe'),
-        help: __('How skilled should the reader be?', 'recipe'),
+        label: __$2('Meal Type', 'recipe'),
+        help: __$2('How skilled should the reader be?', 'recipe'),
         value: props.attributes.meal_type,
         options: [{
           value: 'Breakfast',
@@ -565,34 +584,292 @@
         }
       }))), wp.element.createElement("div", {
         className: props.className
-      }, wp.element.createElement("ul", {
-        className: "list-unstyled"
-      }, wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Ingredients', 'recipe'), ": "), wp.element.createElement("span", {
+      }, wp.element.createElement(BlockControls$1, null, wp.element.createElement(BlockAlignmentToolbar, {
+        value: props.attributes.block_alignment,
+        onChange: new_val => {
+          props.setAttributes({
+            block_alignment: new_val
+          });
+        }
+      }), wp.element.createElement(AlignmentToolbar, {
+        value: props.attributes.text_alignment,
+        onChange: new_val => {
+          props.setAttributes({
+            text_alignment: new_val
+          });
+        }
+      })), wp.element.createElement("ul", {
+        className: "list-unstyled",
+        style: {
+          textAlign: props.attributes.text_alignment
+        }
+      }, wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Ingredients', 'recipe'), ": "), wp.element.createElement("span", {
         className: "ingredients-ph"
-      }, props.attributes.ingredients)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Time', 'recipe'), ": "), wp.element.createElement("span", {
+      }, props.attributes.ingredients)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Cooking Time', 'recipe'), ": "), wp.element.createElement("span", {
         className: "cooking-time-ph"
-      }, props.attributes.cooking_time)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Utensils', 'recipe'), ": "), wp.element.createElement("span", {
+      }, props.attributes.cooking_time)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Utensils', 'recipe'), ": "), wp.element.createElement("span", {
         className: "utensils-ph"
-      }, props.attributes.utensils)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Experience', 'recipe'), ": "), wp.element.createElement("span", {
+      }, props.attributes.utensils)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Cooking Experience', 'recipe'), ": "), wp.element.createElement("span", {
         className: "cooking-experience-ph"
-      }, props.attributes.cooking_experience)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Meal Type', 'recipe'), ": "), wp.element.createElement("span", {
+      }, props.attributes.cooking_experience)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Meal Type', 'recipe'), ": "), wp.element.createElement("span", {
         className: "meal-type-ph"
       }, props.attributes.meal_type))))];
     },
     save: props => {
-      return wp.element.createElement("div", null, wp.element.createElement("ul", {
-        className: "list-unstyled"
-      }, wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Ingredients', 'recipe'), ": "), wp.element.createElement("span", {
+      return wp.element.createElement("div", {
+        className: `align${props.attributes.block_alignment}`
+      }, wp.element.createElement("ul", {
+        className: "list-unstyled",
+        style: {
+          textAlign: props.attributes.text_alignment
+        }
+      }, wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Ingredients', 'recipe'), ": "), wp.element.createElement("span", {
         className: "ingredients-ph"
-      }, props.attributes.ingredients)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Time', 'recipe'), ": "), wp.element.createElement("span", {
+      }, props.attributes.ingredients)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Cooking Time', 'recipe'), ": "), wp.element.createElement("span", {
         className: "cooking-time-ph"
-      }, props.attributes.cooking_time)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Utensils', 'recipe'), ": "), wp.element.createElement("span", {
+      }, props.attributes.cooking_time)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Utensils', 'recipe'), ": "), wp.element.createElement("span", {
         className: "utensils-ph"
-      }, props.attributes.utensils)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Cooking Experience', 'recipe'), ": "), wp.element.createElement("span", {
+      }, props.attributes.utensils)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Cooking Experience', 'recipe'), ": "), wp.element.createElement("span", {
         className: "cooking-experience-ph"
-      }, props.attributes.cooking_experience)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __('Meal Type', 'recipe'), ": "), wp.element.createElement("span", {
+      }, props.attributes.cooking_experience)), wp.element.createElement("li", null, wp.element.createElement("strong", null, __$2('Meal Type', 'recipe'), ": "), wp.element.createElement("span", {
         className: "meal-type-ph"
       }, props.attributes.meal_type))));
+    }
+  });
+
+  const {
+    registerBlockType: registerBlockType$1
+  } = wp.blocks;
+  const {
+    RichText
+  } = wp.blockEditor;
+  const {
+    __: __$1
+  } = wp.i18n;
+  registerBlockType$1('udemy/rich-text', {
+    title: __$1('Rich Text Example', 'recipe'),
+    description: __$1('Rich text example', 'recipe'),
+    category: 'common',
+    icon: block_icons.wapuu,
+    attributes: {
+      message: {
+        type: 'array',
+        source: 'children',
+        selector: '.message-ctr'
+      }
+    },
+    edit: props => {
+      return wp.element.createElement("div", {
+        className: props.className
+      }, wp.element.createElement("h3", null, "Rich Text Example Block"), wp.element.createElement(RichText, {
+        tagName: "div",
+        multiline: "p",
+        placeholder: __$1('Add your content here.', 'recipe'),
+        onChange: new_val => {
+          props.setAttributes({
+            message: new_val
+          });
+        },
+        value: props.attributes.message
+      }));
+    },
+    save: props => {
+      return wp.element.createElement("div", null, wp.element.createElement("h3", null, "Rich Text Example Block"), wp.element.createElement("div", {
+        className: `message-ctr`
+      }, props.attributes.message));
+    }
+  });
+
+  var classnames$1 = {exports: {}};
+
+  /*!
+    Copyright (c) 2018 Jed Watson.
+    Licensed under the MIT License (MIT), see
+    http://jedwatson.github.io/classnames
+  */
+
+  (function (module) {
+  /* global define */
+
+  (function () {
+
+  	var hasOwn = {}.hasOwnProperty;
+
+  	function classNames() {
+  		var classes = [];
+
+  		for (var i = 0; i < arguments.length; i++) {
+  			var arg = arguments[i];
+  			if (!arg) continue;
+
+  			var argType = typeof arg;
+
+  			if (argType === 'string' || argType === 'number') {
+  				classes.push(arg);
+  			} else if (Array.isArray(arg)) {
+  				if (arg.length) {
+  					var inner = classNames.apply(null, arg);
+  					if (inner) {
+  						classes.push(inner);
+  					}
+  				}
+  			} else if (argType === 'object') {
+  				if (arg.toString === Object.prototype.toString) {
+  					for (var key in arg) {
+  						if (hasOwn.call(arg, key) && arg[key]) {
+  							classes.push(key);
+  						}
+  					}
+  				} else {
+  					classes.push(arg.toString());
+  				}
+  			}
+  		}
+
+  		return classes.join(' ');
+  	}
+
+  	if (module.exports) {
+  		classNames.default = classNames;
+  		module.exports = classNames;
+  	} else {
+  		window.classNames = classNames;
+  	}
+  }());
+  }(classnames$1));
+
+  var classNames = classnames$1.exports;
+
+  var btn_icon = wp.element.createElement("svg", {
+    width: "20",
+    height: "20",
+    id: "Capa_1",
+    "data-name": "Capa 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 19.96 19.96"
+  }, wp.element.createElement("circle", {
+    cx: "9.98",
+    cy: "9.98",
+    r: "9.98",
+    fill: "#415870"
+  }), wp.element.createElement("path", {
+    d: "M13.83,11.87a4.34,4.34,0,0,1-3.9-7.75l.08,0a.22.22,0,0,0-.07-.41,5.59,5.59,0,0,0-5.61,8,5.59,5.59,0,0,0,7.49,2.59,5.5,5.5,0,0,0,2.29-2.08.21.21,0,0,0-.28-.3Z",
+    transform: "translate(-.02 -.02)",
+    fill: "#feaf62"
+  }), wp.element.createElement("path", {
+    d: "M8.63,4.17A1.32,1.32,0,0,1,7.31,5.49l-3.93,0a1.32,1.32,0,0,0-.94.39,1.31,1.31,0,0,0-.38.93A1.33,1.33,0,0,0,3.38,8.1H4.89a1.31,1.31,0,0,1,.93.38,1.32,1.32,0,0,1-.93,2.26H.28a.86.86,0,0,1-.23,0q0-.36,0-.72A9.94,9.94,0,0,1,3.07,2.82l4.24,0A1.32,1.32,0,0,1,8.63,4.17Z",
+    transform: "translate(-.02 -.02)",
+    fill: "#62788e"
+  }), wp.element.createElement("path", {
+    d: "M20,10A10,10,0,0,1,19,14.24a1.24,1.24,0,0,1-.83-.38,1.32,1.32,0,0,1-.39-.94A1.32,1.32,0,0,0,16.5,11.6H15a1.32,1.32,0,0,1-.94-.39,1.31,1.31,0,0,1-.38-.93A1.32,1.32,0,0,1,15,9H16.5a1.33,1.33,0,0,0,1.32-1.32A1.33,1.33,0,0,1,19.15,6.3h.12A9.91,9.91,0,0,1,20,10Z",
+    transform: "translate(-.02 -.02)",
+    fill: "#62788e"
+  }), wp.element.createElement("circle", {
+    cx: "13.88",
+    cy: "3.93",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("circle", {
+    cx: "12.35",
+    cy: "7.13",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("circle", {
+    cx: "15",
+    cy: "16.15",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("circle", {
+    cx: "9.84",
+    cy: "1.55",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("circle", {
+    cx: "9.05",
+    cy: "13.89",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("circle", {
+    cx: "4.06",
+    cy: "14.61",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("circle", {
+    cx: "6.21",
+    cy: "17.45",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("circle", {
+    cx: "12.34",
+    cy: "13.12",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("circle", {
+    cx: "6.87",
+    cy: "7.44",
+    r: "0.35",
+    fill: "#e8e4db"
+  }), wp.element.createElement("path", {
+    d: "M16.46,5.6a3.6,3.6,0,0,0,1.09-.24,3.61,3.61,0,0,0-1.09-.25A3.6,3.6,0,0,0,16.22,4,3.61,3.61,0,0,0,16,5.11a3.61,3.61,0,0,0-1.09.25A3.6,3.6,0,0,0,16,5.6a3.54,3.54,0,0,0,.25,1.09A3.53,3.53,0,0,0,16.46,5.6Z",
+    transform: "translate(-.02 -.02)",
+    fill: "#feaf62"
+  }));
+
+  //third party module to allow multiple classes for a component
+  const {
+    registerBlockType
+  } = wp.blocks;
+  const {
+    __
+  } = wp.i18n;
+  const {
+    BlockControls
+  } = wp.editor;
+  const {
+    Toolbar,
+    Button,
+    Tooltip
+  } = wp.components;
+  const {
+    classnames
+  } = classNames;
+  registerBlockType('udemy/night-mode', {
+    title: __('Night Mode', 'recipe'),
+    description: __('Content with night mode.', 'recipe'),
+    category: 'common',
+    icon: block_icons.wapuu,
+    attributes: {
+      night_mode: {
+        type: 'boolean',
+        default: false
+      }
+    },
+    edit: props => {
+      return wp.element.createElement("div", {
+        className: props.className
+      }, wp.element.createElement(BlockControls, null, wp.element.createElement(Toolbar, null, wp.element.createElement(Tooltip, {
+        text: __('Night mode', 'recipe')
+      }, wp.element.createElement(Button, {
+        className: classnames('components-icon-button', 'components-toolbar__control', {
+          'is-active': props.attributes.night_mode
+        }),
+        onClick: () => {
+          props.setAttributes({
+            night_mode: !props.attributes.night_mode
+          });
+        }
+      }, btn_icon)))), wp.element.createElement("div", {
+        className: classnames('content-example', {
+          'night': props.attributes.night_mode
+        })
+      }, "This is an example of a block with night mode."));
+    },
+    save: props => {
+      return wp.element.createElement("div", null, wp.element.createElement("div", {
+        className: classnames('content-example', {
+          'night': props.attributes.night_mode
+        })
+      }, "This is an example of a block with night mode."));
     }
   });
 
