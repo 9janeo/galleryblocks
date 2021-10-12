@@ -1,10 +1,8 @@
-
+// Main File
 import "./index.scss"
-import "./biometric"
-import "./enviro"
-import "./my-block"
-import "./carousel"
+import "./frontend.scss"
 
-console.log("Hello from your custom blocks");
- 
+import './clear-blocks';
 
+// console.log( wp );
+console.log("Hello from your main index");

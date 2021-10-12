@@ -14,9 +14,7 @@ registerBlockType("cgb/two-blocks", {
     hairColor: { type: "string" }
   },
   edit: EditComponent,
-  save: function (props) {
-    return null
-  }
+  save: displayBio
 })
 
 function EditComponent(props) {

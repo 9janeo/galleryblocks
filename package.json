@@ -7,6 +7,8 @@
     "preview": "npm-run-all --parallel sync start",
     "sync": "browser-sync start -p 'localdev/befdev' --files '**/*.php' 'build/*.js' 'build/*.css'",
     "build": "wp-scripts build src/index.js src/frontend.js",
+    "dev": "cross-env BABEL_ENV=default rollup -c -w",
+    "roll": "cross-env BABEL_ENV=default NODE_ENV=production rollup -c",
     "start": "wp-scripts start src/index.js src/frontend.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,8 +16,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@wordpress/babel-preset-default": "^6.3.2",
     "@wordpress/scripts": "^17.0.0",
+    "babel-loader": "^8.2.2",
     "browser-sync": "^2.27.4",
-    "npm-run-all": "^4.1.5"
+    "classnames": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.57.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-scss": "^3.0.0"
   }
 }

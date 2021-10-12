@@ -21,19 +21,23 @@ registerBlockType('ccg/border-box', {
     return wp.element.createElement(
       "div",
       null,
+      wp.element.createElement("input", {type: "text", value: props.attributes.content, onChange: updateContent }),
+      wp.element.createElement(wp.components.ColorPicker, {color: props.attributes.color, onChangeComplete: updateColor }),
       wp.element.createElement("h3",
         {style: {border: `5px solid ${props.attributes.color}`}},
         `Preview: ${props.attributes.content}`
-      ),
-      wp.element.createElement("input", {type: "text", value: props.attributes.content, onChange: updateContent }),
-      wp.element.createElement(wp.components.ColorPicker, {color: props.attributes.color, onChangeComplete: updateColor })
+      )
     );
   },
   save: function(props){
-    return wp.element.createElement("h3", {
-      style: {
-        border: `5px solid ${props.attributes.color}`
-      }
-    }, props.attributes.content);
+    return wp.element.createElement(
+      "div",
+      null,
+      wp.element.createElement("h3", {
+        style: {
+          border: `5px solid ${props.attributes.color}`
+        }
+      }, props.attributes.content)
+    );
   }
 })
