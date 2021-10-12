@@ -15,12 +15,14 @@ define( 'CLEAR_BLOCKS_URL', __FILE__ );
 
 // Includes
 include('src/clear-blocks/enqueue.php');
+include( dirname(CLEAR_BLOCKS_URL) . '/includes/widgets.php' );
+include( dirname(CLEAR_BLOCKS_URL) . '/includes/widgets/daily-recipe.php' );
 
 // Hooks
 // register_activation_hook( __FILE__, $callback:callable )
 add_action( 'enqueue_block_editor_assets', 'r_enqueue_block_editor_assets');
 add_action( 'enqueue_block_assets', 'r_enqueue_block_assets');
-
+add_action( 'widgets_init', 'r_widgets_init');
 
 
 class BradsBoilerplate {
