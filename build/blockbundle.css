@@ -46,3 +46,19 @@
   background-color: #333;
   color: #ddd;
 }
+
+.wp-block-ccg-carousel .image-ctr {
+  max-width: 150px;
+  height: auto;
+}
+.wp-block-ccg-carousel .edit {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.wp-block-ccg-carousel .edit .slider-item {
+  min-width: 25%;
+  max-width: 100%;
+}

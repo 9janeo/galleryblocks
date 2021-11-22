@@ -389,13 +389,13 @@
     __: __$5
   } = wp.i18n;
   const {
-    InspectorControls: InspectorControls$3,
+    InspectorControls: InspectorControls$4,
     BlockControls: BlockControls$1,
     AlignmentToolbar,
     BlockAlignmentToolbar
   } = wp.blockEditor;
   const {
-    PanelBody: PanelBody$2,
+    PanelBody: PanelBody$3,
     PanelRow: PanelRow$1,
     TextControl,
     SelectControl
@@ -459,7 +459,7 @@
       // const updateIngredients = (new_val) => {
       //   props.setAttributes({ ingredients: new_val} )
       // }
-      return [wp.element.createElement(InspectorControls$3, null, wp.element.createElement(PanelBody$2, {
+      return [wp.element.createElement(InspectorControls$4, null, wp.element.createElement(PanelBody$3, {
         title: __$5('Basics', 'recipe')
       }, wp.element.createElement(PanelRow$1, null, wp.element.createElement("p", null, __$5('Configure the contents of your block here.', 'recipe'))), wp.element.createElement(TextControl, {
         label: __$5('Ingredients', 'recipe'),
@@ -767,13 +767,13 @@
   } = wp.i18n;
   const {
     BlockControls,
-    InspectorControls: InspectorControls$2
+    InspectorControls: InspectorControls$3
   } = wp.editor;
   const {
     Toolbar,
     Button: Button$2,
     Tooltip,
-    PanelBody: PanelBody$1,
+    PanelBody: PanelBody$2,
     PanelRow,
     FormToggle
   } = wp.components;
@@ -795,7 +795,7 @@
         });
       };
 
-      return [wp.element.createElement(InspectorControls$2, null, wp.element.createElement(PanelBody$1, {
+      return [wp.element.createElement(InspectorControls$3, null, wp.element.createElement(PanelBody$2, {
         title: __$3('Night Mode', 'recipe')
       }, wp.element.createElement(PanelRow, null, wp.element.createElement("label", {
         htmlFor: "udemy-recipe-night-mode-toggle"
@@ -831,17 +831,17 @@
     registerBlockType: registerBlockType$2
   } = wp.blocks;
   const {
-    InspectorControls: InspectorControls$1
+    InspectorControls: InspectorControls$2
   } = wp.blockEditor;
   const {
     __: __$2
   } = wp.i18n;
   const {
-    PanelBody,
-    TextareaControl,
-    CheckboxControl,
-    RadioControl,
-    RangeControl
+    PanelBody: PanelBody$1,
+    TextareaControl: TextareaControl$1,
+    CheckboxControl: CheckboxControl$1,
+    RadioControl: RadioControl$1,
+    RangeControl: RangeControl$1
   } = wp.components;
   registerBlockType$2('udemy/inspector-controls-example', {
     title: __$2('Inspector Controls', 'recipe'),
@@ -866,9 +866,9 @@
       }
     },
     edit: props => {
-      return [wp.element.createElement(InspectorControls$1, null, wp.element.createElement(PanelBody, {
+      return [wp.element.createElement(InspectorControls$2, null, wp.element.createElement(PanelBody$1, {
         title: __$2('Input Examples', 'recipe')
-      }, wp.element.createElement(TextareaControl, {
+      }, wp.element.createElement(TextareaControl$1, {
         label: __$2('Text Area Control', 'recipe'),
         help: __$2('Help Text', 'recipe'),
         value: props.attributes.textarea_input,
@@ -877,7 +877,7 @@
             textarea_input: new_val
           });
         }
-      }), wp.element.createElement(CheckboxControl, {
+      }), wp.element.createElement(CheckboxControl$1, {
         heading: __$2('Checkbox Control', 'recipe'),
         label: __$2('Click me!', 'recipe'),
         help: __$2('Help Text', 'recipe'),
@@ -887,7 +887,7 @@
             checkbox_input: new_val
           });
         }
-      }), wp.element.createElement(RadioControl, {
+      }), wp.element.createElement(RadioControl$1, {
         label: __$2('Radio Control', 'recipe'),
         selected: props.attributes.radio_input,
         options: [{
@@ -902,7 +902,7 @@
             radio_input: new_val
           });
         }
-      }), wp.element.createElement(RangeControl, {
+      }), wp.element.createElement(RangeControl$1, {
         beforeIcon: "arrow-left-alt2",
         afterIcon: "arrow-right-alt2",
         label: __$2('Range Control', 'recipe'),
@@ -916,7 +916,7 @@
         }
       }))), wp.element.createElement("div", {
         className: props.className
-      }, wp.element.createElement("ul", null, wp.element.createElement("li", null, wp.element.createElement("strong", null, "Textarea Input"), " - ", props.attributes.textarea_input), wp.element.createElement("li", null, wp.element.createElement("strong", null, "Checkbox Input"), " - ", props.attributes.checkbox_input.toString()), wp.element.createElement("li", null, wp.element.createElement("strong", null, "Radio Input"), " - ", props.attributes.radio_input), wp.element.createElement("li", null, wp.element.createElement("strong", null, "Range Input"), " - ", props.attributes.range_input)), wp.element.createElement(TextareaControl, {
+      }, wp.element.createElement("ul", null, wp.element.createElement("li", null, wp.element.createElement("strong", null, "Textarea Input"), " - ", props.attributes.textarea_input), wp.element.createElement("li", null, wp.element.createElement("strong", null, "Checkbox Input"), " - ", props.attributes.checkbox_input.toString()), wp.element.createElement("li", null, wp.element.createElement("strong", null, "Radio Input"), " - ", props.attributes.radio_input), wp.element.createElement("li", null, wp.element.createElement("strong", null, "Range Input"), " - ", props.attributes.range_input)), wp.element.createElement(TextareaControl$1, {
         label: __$2('Text Area Control', 'recipe'),
         help: __$2('Help Text', 'recipe'),
         value: props.attributes.textarea_input,
@@ -925,7 +925,7 @@
             textarea_input: new_val
           });
         }
-      }), wp.element.createElement(CheckboxControl, {
+      }), wp.element.createElement(CheckboxControl$1, {
         heading: __$2('Checkbox Control', 'recipe'),
         label: __$2('Click me!', 'recipe'),
         help: __$2('Help Text', 'recipe'),
@@ -935,7 +935,7 @@
             checkbox_input: new_val
           });
         }
-      }), wp.element.createElement(RadioControl, {
+      }), wp.element.createElement(RadioControl$1, {
         label: __$2('Radio Control', 'recipe'),
         selected: props.attributes.radio_input,
         options: [{
@@ -950,7 +950,7 @@
             radio_input: new_val
           });
         }
-      }), wp.element.createElement(RangeControl, {
+      }), wp.element.createElement(RangeControl$1, {
         beforeIcon: "arrow-left-alt2",
         afterIcon: "arrow-right-alt2",
         label: __$2('Range Control', 'recipe'),
@@ -970,40 +970,52 @@
   });
 
   // import { importDeclaration } from '@babel/types';
+
   const {
     registerBlockType: registerBlockType$1
   } = wp.blocks;
   const {
     Button: Button$1,
-    Dashicon: Dashicon$1
+    Dashicon: Dashicon$1,
+    PanelBody,
+    TextareaControl,
+    CheckboxControl,
+    RadioControl,
+    RangeControl
   } = wp.components;
   const {
     __: __$1
   } = wp.i18n;
   const {
     MediaUpload: MediaUpload$1,
-    MediaUploadCheck: MediaUploadCheck$1
+    MediaUploadCheck: MediaUploadCheck$1,
+    InspectorControls: InspectorControls$1
   } = wp.blockEditor;
-  registerBlockType$1('udemy/media-upload', {
-    title: __$1('Image Media Upload', 'recipe'),
-    description: __$1('Image Media Upload', 'recipe'),
-    category: 'common',
+  registerBlockType$1("udemy/media-upload", {
+    title: __$1("Image Media Upload", "recipe"),
+    description: __$1("Image Media Upload", "recipe"),
+    category: "common",
     icon: block_icons.wapuu,
     attributes: {
+      message: {
+        type: "array",
+        source: "children",
+        selector: ".message-ctr"
+      },
       img_ID: {
-        type: 'number'
+        type: "number"
       },
       img_URL: {
-        type: 'string',
-        source: 'attribute',
-        attribute: 'src',
-        selector: 'img'
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: "img"
       },
       img_alt: {
-        type: 'string',
-        source: 'attribute',
-        attribute: 'src',
-        selector: 'img'
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: "img"
       }
     },
     edit: props => {
@@ -1013,6 +1025,7 @@
           img_URL: img.url,
           img_alt: img.alt
         });
+        console.log("Updated attributes.");
       };
 
       const remove_img = img => {
@@ -1023,21 +1036,23 @@
         });
       };
 
-      return wp.element.createElement("div", {
+      return [wp.element.createElement("div", {
         className: props.className
       }, props.attributes.img_ID ? wp.element.createElement("div", {
         className: "image-ctr"
+      }, wp.element.createElement("ul", {
+        className: "list"
       }, wp.element.createElement("img", {
         src: props.attributes.img_URL,
         alt: props.attributes.img_alt
-      }), props.isSelected ? wp.element.createElement(Button$1, {
+      })), props.isSelected ? wp.element.createElement(Button$1, {
         className: "btn-remove",
         onClick: remove_img
       }, wp.element.createElement(Dashicon$1, {
         icon: "no",
         size: "20"
       })) : null) : wp.element.createElement(MediaUploadCheck$1, null, wp.element.createElement(MediaUpload$1, {
-        allowedType: ['image'],
+        allowedType: ["image"],
         value: props.attributes.img_ID,
         onSelect: select_img,
         render: ({
@@ -1045,14 +1060,27 @@
         }) => wp.element.createElement(Button$1, {
           className: "button button-large",
           onClick: open
-        }, __$1('Upload Image', 'recipe'))
-      })));
+        }, __$1("Upload Image", "recipe"))
+      }))), wp.element.createElement(InspectorControls$1, null, wp.element.createElement(PanelBody, {
+        title: __$1("Input Examples", "recipe")
+      }, wp.element.createElement(TextareaControl, {
+        label: __$1("Text Area Control", "recipe"),
+        help: __$1("Help Text", "recipe"),
+        value: props.attributes.message,
+        onChange: new_val => {
+          props.setAttributes({
+            message: new_val
+          });
+        }
+      })))];
     },
     save: props => {
-      return wp.element.createElement("div", null, wp.element.createElement("img", {
+      return wp.element.createElement("div", null, wp.element.createElement("p", null, props.attributes.message), wp.element.createElement("ul", {
+        className: props.attributes
+      }, wp.element.createElement("img", {
         src: props.attributes.img_URL,
         alt: props.attributes.img_alt
-      }));
+      })));
     }
   });
 
@@ -1071,107 +1099,142 @@
     MediaUpload,
     MediaUploadCheck
   } = wp.blockEditor;
+
+  function MyMediaUploader({
+    mediaIDs,
+    onSelect
+  }) {
+    return wp.element.createElement("div", {
+      className: `d-block w-100`
+    }, wp.element.createElement(MediaUploadCheck, null, wp.element.createElement(MediaUpload, {
+      allowedType: ['image'],
+      value: mediaIDs,
+      onSelect: onSelect,
+      render: ({
+        open
+      }) => wp.element.createElement(Button, {
+        className: "button button-large",
+        onClick: open
+      }, mediaIDs.length < 1 ? __('Upload Item(s)', 'Upload/Select Images') : __('Edit Item(s)', 'Edit')),
+      gallery: true,
+      multiple: true
+    })));
+  }
+
   registerBlockType('ccg/carousel', {
     title: __('Carousel', 'bef'),
     icon: __('update', 'bef'),
     category: 'media',
     attributes: {
+      images: {
+        type: "array",
+        selector: "ul",
+        default: [],
+        query: {
+          mediaID: {
+            type: 'number',
+            source: 'attribute',
+            attribute: 'data-id',
+            selector: 'img'
+          },
+          mediaURL: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'src',
+            selector: 'img'
+          },
+          thumbnail: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'src',
+            selector: 'img'
+          },
+          img_alt: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'src',
+            selector: 'img'
+          }
+        }
+      },
       content: {
         type: 'string'
       },
       color: {
         type: 'string'
-      },
-      img_ID: {
-        type: 'number'
-      },
-      img_URL: {
-        type: 'string',
-        source: 'attribute',
-        attribute: 'src',
-        selector: 'img'
-      },
-      img_alt: {
-        type: 'string',
-        source: 'attribute',
-        attribute: 'src',
-        selector: 'img'
       }
     },
     edit: props => {
-      function updateContent(event) {
+      const onSelect = items => {
         props.setAttributes({
-          content: event.target.value
-        });
-      }
-
-      function updateColor(event) {
-        props.setAttributes({
-          color: event.target.value
-        });
-      }
-
-      const select_img = img => {
-        props.setAttributes({
-          img_ID: img.id,
-          img_URL: img.url,
-          img_alt: img.alt
-        });
-      };
-
-      const remove_img = img => {
-        props.setAttributes({
-          img_ID: null,
-          img_URL: null,
-          img_alt: null
+          images: items.map(item => {
+            return {
+              mediaID: parseInt(item.id, 10),
+              mediaURL: item.url,
+              thumbnail: item.sizes.thumbnail.url
+            };
+          })
         });
       };
 
       return [wp.element.createElement(InspectorControls, null, "Hello From Inspector"), wp.element.createElement("div", {
         className: props.className
-      }, wp.element.createElement("ul", {
-        className: "list-unstyled"
-      }, props.attributes.img_ID ? wp.element.createElement("div", {
+      }, wp.element.createElement("p", null, props.attributes.images.length < 1 ? 'Empty' : 'Has Slides'), wp.element.createElement("ul", {
+        className: "edit list-unstyled"
+      }, props.attributes.images.map((item, index) => wp.element.createElement("div", {
+        className: `slider-item`,
+        key: 'image-' + item.mediaID
+      }, wp.element.createElement("img", {
+        class: `d-block w-100 ${index}`,
+        src: item.mediaURL,
+        "data-id": item.mediaID,
+        "data-thumb": item.thumbnail
+      })))), props.attributes.img_ID ? wp.element.createElement("div", {
         className: "image-ctr"
       }, wp.element.createElement("img", {
         src: props.attributes.img_URL,
         alt: props.attributes.img_alt
-      }), props.isSelected ? wp.element.createElement(Button, {
-        className: "btn-remove",
-        onClick: remove_img
-      }, wp.element.createElement(Dashicon, {
-        icon: "no",
-        size: "20"
-      })) : null) : wp.element.createElement(MediaUploadCheck, null, wp.element.createElement(MediaUpload, {
-        allowedType: ['image'],
-        value: props.attributes.img_ID,
-        onSelect: select_img,
-        render: ({
-          open
-        }) => wp.element.createElement(Button, {
-          className: "button button-large",
-          onClick: open
-        }, __('Upload Image', 'recipe'))
-      })), wp.element.createElement("li", null, "First one"), wp.element.createElement("li", null, wp.element.createElement("label", null, "Content:", wp.element.createElement("input", {
-        type: "text",
-        value: props.attributes.content,
-        onChange: updateContent
-      }))), wp.element.createElement("li", null, wp.element.createElement("label", null, "Color: ", wp.element.createElement("input", {
-        type: "text",
-        value: props.attributes.color,
-        onChange: updateColor
-      })))))];
+      })) : wp.element.createElement(MyMediaUploader, {
+        mediaIDs: props.attributes.images.map(item => item.mediaID),
+        onSelect: onSelect
+      }))];
     },
     save: props => {
       return wp.element.createElement("div", {
-        className: props.className,
-        style: `border: 5px dashed #333`
-      }, wp.element.createElement("p", null, "First One"), wp.element.createElement("h3", {
-        style: `color: ${props.attributes.color}`
-      }, props.attributes.content), wp.element.createElement("div", null, wp.element.createElement("img", {
-        src: props.attributes.img_URL,
-        alt: props.attributes.img_alt
-      })));
+        id: "block-carousel",
+        className: `slider carousel slide ${props.className}`,
+        "data-ride": "carousel"
+      }, wp.element.createElement("div", {
+        className: " carousel-inner"
+      }, props.attributes.images, props.attributes.images.map((item, index) => wp.element.createElement("div", {
+        className: `carousel-item slider-item ${index == 0 ? "active" : ""} `,
+        key: 'image-' + item.mediaID
+      }, wp.element.createElement("img", {
+        class: `d-block w-100 ${index}`,
+        src: item.mediaURL,
+        "data-id": item.mediaID,
+        "data-thumb": item.thumbnail
+      })))), wp.element.createElement("a", {
+        class: "carousel-control-prev",
+        href: "#block-carousel",
+        role: "button",
+        "data-slide": "prev"
+      }, wp.element.createElement("span", {
+        class: "carousel-control-prev-icon",
+        "aria-hidden": "true"
+      }), wp.element.createElement("span", {
+        class: "sr-only"
+      }, "Previous")), wp.element.createElement("a", {
+        class: "carousel-control-next",
+        href: "#block-carousel",
+        role: "button",
+        "data-slide": "next"
+      }, wp.element.createElement("span", {
+        class: "carousel-control-next-icon",
+        "aria-hidden": "true"
+      }), wp.element.createElement("span", {
+        class: "sr-only"
+      }, "Next")));
     }
   });
 
