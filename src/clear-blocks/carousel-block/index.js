@@ -150,19 +150,18 @@ registerBlockType('ccg/carousel', {
   save: (props) => {
     return (
       <div id="block-carousel" className={`frontend slider carousel slide ${props.className}`} data-interval="false">
-        <div className="custom-control">
-        <div className='overlay'></div>
-        <span className="fullscreen">
-          <FontAwesomeIcon icon={faExpandArrowsAlt} />
-          <FontAwesomeIcon icon={faCompressArrowsAlt} />
-        </span>
+        <div className="display-controls">
+          <span className="fullscreen">
+            <a href="#"><FontAwesomeIcon icon={faExpandArrowsAlt} /></a>
+          </span>
+          {/* <FontAwesomeIcon icon={faCompressArrowsAlt} /> */}
         </div>
         <div className={" carousel-inner"} >{props.attributes.images}
           { props.attributes.images.map ( (item, index) => (
             <div className={`carousel-item slider-item ${(index == 0)? "active" : ""} ` } key={'image-' + item.mediaID }>
               <img className={`d-block w-100 ${index}`} src={item.mediaURL} data-id={item.mediaID} data-thumb={item.thumbnail} />
             </div>
-          ))}          
+          ))}
         </div>
         <a class="carousel-control-prev" href="#block-carousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
