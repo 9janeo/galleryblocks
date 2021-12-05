@@ -1,13 +1,3 @@
-.makeUpYourBlockTypeName {
-  background-color: #b8c9f8;
-  border: 1px solid #94a9e2;
-  border-radius: 5px;
-}
-
-.wp-block-udemy-recipe {
-  background-color: #b8c9f8;
-}
-
 .boilerplate-frontend {
   border-radius: 5px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.07);
@@ -25,6 +15,16 @@
 .wp-block-ccg-border-box {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.07);
   background-color: #ffe5b4;
+}
+
+.makeUpYourBlockTypeName {
+  background-color: #b8c9f8;
+  border: 1px solid #94a9e2;
+  border-radius: 5px;
+}
+
+.wp-block-udemy-recipe {
+  background-color: #b8c9f8;
 }
 
 .wp-block-udemy-media-upload .image-ctr {
@@ -61,4 +61,45 @@
 .wp-block-ccg-carousel .edit .slider-item {
   min-width: 25%;
   max-width: 100%;
+}
+
+.frontend .carousel-inner .dashicons {
+  color: red;
+  z-index: 26;
+  text-align: center;
+  position: absolute;
+}
+.frontend .carousel-inner .carousel-item.active:hover .overlay {
+  background-color: #0003;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+.frontend .carousel-inner .carousel-item.active:hover img {
+  opacity: 0.75;
+}
+.frontend .overlay {
+  top: 0;
+  left: 0;
+  z-index: 12;
+  border: solid red 1px;
+  width: 50%;
+  height: 100%;
+}
+.frontend .overlay:hover {
+  background-color: #0003;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+.frontend .overlay svg {
+  position: absolute;
+  bottom: 50%;
+  max-width: 100%;
+}
+.frontend .custom-control {
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  z-index: 14;
 }

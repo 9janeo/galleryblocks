@@ -20,6 +20,7 @@
     "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
+    "@rollup/plugin-replace": "^3.0.0",
     "@wordpress/babel-preset-default": "^6.3.2",
     "@wordpress/scripts": "^17.0.0",
     "babel-loader": "^8.2.2",
@@ -31,5 +32,10 @@
     "rollup": "^2.57.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-scss": "^3.0.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16"
   }
 }

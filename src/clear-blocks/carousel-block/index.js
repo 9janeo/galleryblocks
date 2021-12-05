@@ -4,7 +4,12 @@ const { __ } = wp.i18n;
 const { InspectorControls, 
   MediaUpload, 
   MediaUploadCheck } = wp.blockEditor;
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckSquare, faCoffee, faSearchPlus, faSearchMinus, faIcons, faExpandArrowsAlt, faCompressArrowsAlt } from '@fortawesome/free-solid-svg-icons'
+
 import './editor.scss';
+import './frontend.scss';
 
 function MyMediaUploader( {mediaIDs, onSelect } ) {
 	return (
@@ -64,6 +69,10 @@ registerBlockType('ccg/carousel', {
           selector: 'img'
         }
       },
+    },
+    display: {
+      type: 'string',
+      default: 'normal'
     },
     content: {type: 'string'},
     color: {type: 'string'},
@@ -140,13 +149,20 @@ registerBlockType('ccg/carousel', {
 
   save: (props) => {
     return (
-      <div id="block-carousel" className={`slider carousel slide ${props.className}`} data-ride="carousel">
+      <div id="block-carousel" className={`frontend slider carousel slide ${props.className}`} data-interval="false">
+        <div className="custom-control">
+        <div className='overlay'></div>
+        <span className="fullscreen">
+          <FontAwesomeIcon icon={faExpandArrowsAlt} />
+          <FontAwesomeIcon icon={faCompressArrowsAlt} />
+        </span>
+        </div>
         <div className={" carousel-inner"} >{props.attributes.images}
           { props.attributes.images.map ( (item, index) => (
             <div className={`carousel-item slider-item ${(index == 0)? "active" : ""} ` } key={'image-' + item.mediaID }>
-              <img class={`d-block w-100 ${index}`} src={item.mediaURL} data-id={item.mediaID} data-thumb={item.thumbnail} />
+              <img className={`d-block w-100 ${index}`} src={item.mediaURL} data-id={item.mediaID} data-thumb={item.thumbnail} />
             </div>
-          ))}
+          ))}          
         </div>
         <a class="carousel-control-prev" href="#block-carousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

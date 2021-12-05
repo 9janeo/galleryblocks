@@ -1,0 +1,53 @@
+.frontend{
+  .carousel-inner {
+    .dashicons{
+      color: red;
+      z-index: 26;
+      text-align: center;
+      position: absolute;
+    }
+    
+    .carousel-item.active {
+      &:hover{
+        .overlay {
+          background-color: #0003;
+          display: flex;
+          align-items: center;
+          justify-items: center;
+        }
+        img{
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+  .overlay {
+    top: 0;
+    left: 0;
+    // display: none;
+    z-index: 12;
+    border: solid red 1px;
+    width: 50%;
+    height: 100%;
+    &:hover {
+      background-color: #0003;
+      display: flex;
+      align-items: center;
+      justify-items: center;
+    }
+    svg {
+      position: absolute;
+      bottom: 50%;
+      max-width: 100%;
+    }
+  }
+  .custom-control {
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    z-index: 14;
+    .fullscreen{
+      
+    }
+  }
+}

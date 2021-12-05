@@ -2,6 +2,7 @@
 import babel from 'rollup-plugin-babel';
 import scss from 'rollup-plugin-scss';
 import commonjs from '@rollup/plugin-commonjs';
+import replace from '@rollup/plugin-replace';
 
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 
@@ -19,6 +20,11 @@ module.exports = {
     name: 'clearBlocks'
   },
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      __buildDate__: () => JSON.stringify(new Date()),
+      __buildVersion: 15
+    }),
     babel({
       exclude: 'node_modules/**', 
     }),
